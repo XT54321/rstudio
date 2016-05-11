@@ -122,8 +122,8 @@ if(APPLE OR WIN32 OR RSTUDIO_PACKAGE_BUILD)
    set(Boost_USE_STATIC_LIBS ON)
 endif()
 
-# require boost 1.50
-set(BOOST_VERSION 1.50.0)
+# require boost 1.60
+set(BOOST_VERSION 1.60.0)
 
 list(APPEND BOOST_LIBS
    date_time
@@ -140,7 +140,7 @@ list(APPEND BOOST_LIBS
 # UNIX BOOST
 if(UNIX)
    # prefer static link to our custom built version
-   set(RSTUDIO_TOOLS_BOOST /opt/rstudio-tools/boost/boost_1_50_0)
+   set(RSTUDIO_TOOLS_BOOST /opt/rstudio-tools/boost/boost_1_60_0)
    if(EXISTS ${RSTUDIO_TOOLS_BOOST})
       # find headers
       set(Boost_USE_STATIC_LIBS ON)
@@ -165,12 +165,12 @@ else()
      else()
         set(BOOST_ARCH "32")
      endif()
-     set(BOOST_ROOT "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/boost-1.50-win-gcc491/boost${BOOST_ARCH}")
-     set(BOOST_INCLUDEDIR "${BOOST_ROOT}/include/boost-1_50")
+     set(BOOST_ROOT "${RSTUDIO_WINDOWS_DEPENDENCIES_DIR}/boost-1.60-win-gcc491/boost${BOOST_ARCH}")
+     set(BOOST_INCLUDEDIR "${BOOST_ROOT}/include/boost-1_60")
      find_package(Boost ${BOOST_VERSION} REQUIRED)
      set(BOOST_LIBRARYDIR "${BOOST_ROOT}/lib")
      foreach(BOOST_LIB ${BOOST_LIBS})
-        list(APPEND Boost_LIBRARIES "${BOOST_LIBRARYDIR}/libboost_${BOOST_LIB}${Boost_COMPILER}-mt-1_50.a")
+        list(APPEND Boost_LIBRARIES "${BOOST_LIBRARYDIR}/libboost_${BOOST_LIB}${Boost_COMPILER}-mt-1_60.a")
      endforeach()
 endif()
 

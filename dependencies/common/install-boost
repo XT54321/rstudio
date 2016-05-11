@@ -24,8 +24,8 @@ INSTALL_DIR=`pwd`
 PLATFORM=`uname`
 
 # vars
-BOOST_VERSION_NUMBER=1.50.0
-BOOST_VERSION=boost_1_50_0
+BOOST_VERSION_NUMBER=1.60.0
+BOOST_VERSION=boost_1_60_0
 BOOST_DIR=/opt/rstudio-tools/boost/$BOOST_VERSION
 BOOST_TAR=$BOOST_VERSION.tar.bz2
 BOOST_BUILD_DIR=boost-build
@@ -72,7 +72,7 @@ then
 
      sudo ./bjam ${BOOST_BJAM_FLAGS} --prefix=$BOOST_DIR toolset=clang $CXX_STDLIB_FLAGS variant=release threading=multi link=static install
    else
-     sudo ./bjam ${BOOST_BJAM_FLAGS} --prefix=$BOOST_DIR variant=release install
+     sudo ./bjam ${BOOST_BJAM_FLAGS} --prefix=$BOOST_DIR variant=release -j 8 install
    fi
 
    # go back to the original install dir and remove build dir
